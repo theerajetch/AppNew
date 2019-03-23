@@ -6,10 +6,19 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>detail</ion-title>
+    <ion-title>News Detail</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <img [src]="item.thumbnail" alt ="" style="100%">
+  <ion-card>
+      <ion-card-header>
+        {{item.title}}
+      </ion-card-header>
+      <ion-card-content>
+        <p>Auther: {{item.auther}}</p>
+        <a href="{{item.url}}" target="_blank" ion-button block>read more</a>
+      </ion-card-content>
+  </ion-card>
 </ion-content>
