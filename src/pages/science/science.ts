@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
 /**
  * Generated class for the SciencePage page.
  *
@@ -14,10 +17,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'science.html',
 })
 export class SciencePage {
+sciencenews:any=0;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) {
+    this.http.get('https://www.reddit.com/r/science/new.json?limit=20')
+    .map(res=>res.json())
+    .subscribe(data=>{
+      this.sciencenews = data.data.children;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  });
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad SciencePage');
   }
